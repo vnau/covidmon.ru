@@ -1,0 +1,190 @@
+.App {
+  padding-bottom: 0;
+}
+
+.App .display-4{
+	font-size: 3rem;
+	line-height: 1;
+	margin-bottom: 0;
+}
+
+.card.card-stat{
+  min-width: 150px;
+}
+
+.card-stat .card-body{
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
+
+.card-stat:hover{
+  text-decoration: none;
+}
+
+.table thead th{
+  font-size: 0.8em;
+}
+
+small{
+	color: #888888;
+}
+
+@media (min-width: 1200px) {
+ .App.container, .App.container-lg, .App.container-md, .App.container-sm, .App.container-xl {
+    max-width: 1190px;
+}
+}
+
+.cases-new{
+  margin-bottom: -1.5rem;
+}
+.react-bootstrap-table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch
+  }
+  .react-bootstrap-table table {
+  table-layout: auto !important
+  }
+
+  /* .table th, */
+  .table td {
+  white-space: nowrap
+  }
+  
+/* body{
+background-image: url(/app/static/images/background.jpg);
+background-repeat: no-repeat;
+background-position: right -100px top -120px;
+} */
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.dropup .caret, .navbar-fixed-bottom .dropdown .caret {
+  border-top: 0;
+  border-bottom: 4px dashed;
+  border-bottom: 4px solid \9;
+  content: "";
+}
+
+.App .flex-column{
+	background-color: #fff9 !important;
+}
+
+.App .custom-select {
+	background: #fffd url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center/8px 10px;
+}
+
+h1,h5{
+	text-shadow: 0 0 3px white,0 0 5px white,0 0 10px white;
+}
+
+.App h3 , .App h5 {
+  font-weight: 300;
+   margin-bottom: 1rem; 
+   margin-top: 1rem; 
+}
+
+
+.App .btn-circle {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 4px 0;
+  font-size: 10px;
+  line-height: 0.5;
+  border-radius: 10px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+     .react-bootstrap-table table tbody tr td{
+      background-color: #ffffff;
+    } 
+
+    .table-hover tbody tr:hover td {
+      color: #212529;
+      /* background-color: rgba(0,0,0,.075); */
+      background-color: #dfdfdf;
+  }
+  /* , .react-bootstrap-table table > thead > tr:nth-child(1) > th:nth-child(2) */
+    .react-bootstrap-table table > tbody > tr > td:nth-child(2) 
+{
+    position: sticky;
+     position: -webkit-sticky; 
+     left:0;
+      z-index:1; 
+    }
+
+    /* .react-bootstrap-table{
+overflow-x: visible;
+overflow-y:visible;
+    } */
+
+    thead th {
+      position: sticky; 
+      background-color: #eeeeee;
+      z-index: 100;
+      top: 0;
+     }
+    
+    /* .react-bootstrap-table table > tbody > tr > td:nth-child(3), .react-bootstrap-table table > thead > tr:nth-child(1) > th:nth-child(3) 
+    {
+      max-width: 200px;
+    } */
+
+    .bg-warning-dark{
+background-color: #e4b119!important;
+    }
+
+    .bg-warning-danger{
+      background-color: #ed7b26!important;
+    }

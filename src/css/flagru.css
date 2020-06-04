@@ -1,0 +1,701 @@
+.flagru {
+    display: inline-block;
+	position: relative;
+    -webkit-box-shadow: inset 0 0 2px #a32b07;
+    -moz-box-shadow: inset 0 0 30px #a32b07;
+    box-shadow: inset 0px 0px 1.5px 0px #a32b07;
+}
+
+.flagru-sm {
+	width: 16px; 
+	height: 11px;
+	/*border-radius: 2px;*/
+    background: url('../flags/flagru16x11.png') no-repeat;
+}
+
+.flagru-sm.flagru-ad {
+    background-position: -0 -0;
+}
+
+.flagru-sm.flagru-al {
+    background-position: -16px -0;
+}
+
+.flagru-sm.flagru-alt {
+    background-position: -0 -11px;
+}
+
+.flagru-sm.flagru-amu {
+    background-position: -16px -11px;
+}
+
+.flagru-sm.flagru-ark {
+    background-position: -32px -0;
+}
+
+.flagru-sm.flagru-ast {
+    background-position: -32px -11px;
+}
+
+.flagru-sm.flagru-ba {
+    background-position: -0 -22px;
+}
+
+.flagru-sm.flagru-bel {
+    background-position: -16px -22px;
+}
+
+.flagru-sm.flagru-bry {
+    background-position: -32px -22px;
+}
+
+.flagru-sm.flagru-bu {
+    background-position: -0 -33px;
+}
+
+.flagru-sm.flagru-ce {
+    background-position: -16px -33px;
+}
+
+.flagru-sm.flagru-che {
+    background-position: -32px -33px;
+}
+
+.flagru-sm.flagru-chu {
+    background-position: -48px -0;
+}
+
+.flagru-sm.flagru-cr {
+    background-position: -48px -11px;
+}
+
+.flagru-sm.flagru-cu {
+    background-position: -48px -22px;
+}
+
+.flagru-sm.flagru-da {
+    background-position: -48px -33px;
+}
+
+.flagru-sm.flagru-in {
+    background-position: -0 -44px;
+}
+
+.flagru-sm.flagru-irk {
+    background-position: -16px -44px;
+}
+
+.flagru-sm.flagru-iva {
+    background-position: -32px -44px;
+}
+
+.flagru-sm.flagru-kam {
+    background-position: -48px -44px;
+}
+
+.flagru-sm.flagru-kb {
+    background-position: -64px -0;
+}
+
+.flagru-sm.flagru-kc {
+    background-position: -64px -11px;
+}
+
+.flagru-sm.flagru-kda {
+    background-position: -64px -22px;
+}
+
+.flagru-sm.flagru-kem {
+    background-position: -64px -33px;
+}
+
+.flagru-sm.flagru-kgd {
+    background-position: -64px -44px;
+}
+
+.flagru-sm.flagru-kgn {
+    background-position: -0 -55px;
+}
+
+.flagru-sm.flagru-kha {
+    background-position: -16px -55px;
+}
+
+.flagru-sm.flagru-khm {
+    background-position: -32px -55px;
+}
+
+.flagru-sm.flagru-kir {
+    background-position: -48px -55px;
+}
+
+.flagru-sm.flagru-kk {
+    background-position: -64px -55px;
+}
+
+.flagru-sm.flagru-kl {
+    background-position: -0 -66px;
+}
+
+.flagru-sm.flagru-klu {
+    background-position: -16px -66px;
+}
+
+.flagru-sm.flagru-ko {
+    background-position: -32px -66px;
+}
+
+.flagru-sm.flagru-kos {
+    background-position: -48px -66px;
+}
+
+.flagru-sm.flagru-kr {
+    background-position: -64px -66px;
+}
+
+.flagru-sm.flagru-krs {
+    background-position: -80px -0;
+}
+
+.flagru-sm.flagru-kya {
+    background-position: -80px -11px;
+}
+
+.flagru-sm.flagru-len {
+    background-position: -80px -22px;
+}
+
+.flagru-sm.flagru-lip {
+    background-position: -80px -33px;
+}
+
+.flagru-sm.flagru-mag {
+    background-position: -80px -44px;
+}
+
+.flagru-sm.flagru-me {
+    background-position: -80px -55px;
+}
+
+.flagru-sm.flagru-mo {
+    background-position: -80px -66px;
+}
+
+.flagru-sm.flagru-mos {
+    background-position: -0 -77px;
+}
+
+.flagru-sm.flagru-mow {
+    background-position: -16px -77px;
+}
+
+.flagru-sm.flagru-mur {
+    background-position: -32px -77px;
+}
+
+.flagru-sm.flagru-nen {
+    background-position: -48px -77px;
+}
+
+.flagru-sm.flagru-ngr {
+    background-position: -64px -77px;
+}
+
+.flagru-sm.flagru-niz {
+    background-position: -80px -77px;
+}
+
+.flagru-sm.flagru-nvs {
+    background-position: -96px -0;
+}
+
+.flagru-sm.flagru-oms {
+    background-position: -96px -11px;
+}
+
+.flagru-sm.flagru-ore {
+    background-position: -96px -22px;
+}
+
+.flagru-sm.flagru-orl {
+    background-position: -96px -33px;
+}
+
+.flagru-sm.flagru-per {
+    background-position: -96px -44px;
+}
+
+.flagru-sm.flagru-pnz {
+    background-position: -96px -55px;
+}
+
+.flagru-sm.flagru-pri {
+    background-position: -96px -66px;
+}
+
+.flagru-sm.flagru-psk {
+    background-position: -96px -77px;
+}
+
+.flagru-sm.flagru-ros {
+    background-position: -0 -88px;
+}
+
+.flagru-sm.flagru-rya {
+    background-position: -16px -88px;
+}
+
+.flagru-sm.flagru-sa {
+    background-position: -32px -88px;
+}
+
+.flagru-sm.flagru-sak {
+    background-position: -48px -88px;
+}
+
+.flagru-sm.flagru-sam {
+    background-position: -64px -88px;
+}
+
+.flagru-sm.flagru-sar {
+    background-position: -80px -88px;
+}
+
+.flagru-sm.flagru-se {
+    background-position: -96px -88px;
+}
+
+.flagru-sm.flagru-sev {
+    background-position: -0 -99px;
+}
+
+.flagru-sm.flagru-smo {
+    background-position: -16px -99px;
+}
+
+.flagru-sm.flagru-spe {
+    background-position: -32px -99px;
+}
+
+.flagru-sm.flagru-sta {
+    background-position: -48px -99px;
+}
+
+.flagru-sm.flagru-sve {
+    background-position: -64px -99px;
+}
+
+.flagru-sm.flagru-ta {
+    background-position: -80px -99px;
+}
+
+.flagru-sm.flagru-tam {
+    background-position: -96px -99px;
+}
+
+.flagru-sm.flagru-tom {
+    background-position: -112px -0;
+}
+
+.flagru-sm.flagru-tul {
+    background-position: -112px -11px;
+}
+
+.flagru-sm.flagru-tve {
+    background-position: -112px -22px;
+}
+
+.flagru-sm.flagru-ty {
+    background-position: -112px -33px;
+}
+
+.flagru-sm.flagru-tyu {
+    background-position: -112px -44px;
+}
+
+.flagru-sm.flagru-ud {
+    background-position: -112px -55px;
+}
+
+.flagru-sm.flagru-uly {
+    background-position: -112px -66px;
+}
+
+.flagru-sm.flagru-vgg {
+    background-position: -112px -77px;
+}
+
+.flagru-sm.flagru-vla {
+    background-position: -112px -88px;
+}
+
+.flagru-sm.flagru-vlg {
+    background-position: -112px -99px;
+}
+
+.flagru-sm.flagru-vor {
+    background-position: -0 -110px;
+}
+
+.flagru-sm.flagru-yan {
+    background-position: -16px -110px;
+}
+
+.flagru-sm.flagru-yar {
+    background-position: -32px -110px;
+}
+
+.flagru-sm.flagru-yev {
+    background-position: -48px -110px;
+}
+
+.flagru-sm.flagru-zab {
+    background-position: -64px -110px;
+}
+
+.flagru-lg {
+	width: 60px; 
+	height: 40px;
+	background: url('../flags/flagru60x40.png') no-repeat;
+	/* border-radius: 5px; */
+}
+
+.flagru-lg.flagru-ad {
+    background-position: -0 -0;
+}
+
+.flagru-lg.flagru-al {
+    background-position: -60px -0;
+}
+
+.flagru-lg.flagru-alt {
+    background-position: -0 -40px;
+}
+
+.flagru-lg.flagru-amu {
+    background-position: -60px -40px;
+}
+
+.flagru-lg.flagru-ark {
+    background-position: -0 -80px;
+}
+
+.flagru-lg.flagru-ast {
+    background-position: -60px -80px;
+}
+
+.flagru-lg.flagru-ba {
+    background-position: -120px -0;
+}
+
+.flagru-lg.flagru-bel {
+    background-position: -120px -40px;
+}
+
+.flagru-lg.flagru-bry {
+    background-position: -120px -80px;
+}
+
+.flagru-lg.flagru-bu {
+    background-position: -0 -120px;
+}
+
+.flagru-lg.flagru-ce {
+    background-position: -60px -120px;
+}
+
+.flagru-lg.flagru-che {
+    background-position: -120px -120px;
+}
+
+.flagru-lg.flagru-chu {
+    background-position: -180px -0;
+}
+
+.flagru-lg.flagru-cr {
+    background-position: -180px -40px;
+}
+
+.flagru-lg.flagru-cu {
+    background-position: -180px -80px;
+}
+
+.flagru-lg.flagru-da {
+    background-position: -180px -120px;
+}
+
+.flagru-lg.flagru-in {
+    background-position: -0 -160px;
+}
+
+.flagru-lg.flagru-irk {
+    background-position: -60px -160px;
+}
+
+.flagru-lg.flagru-iva {
+    background-position: -120px -160px;
+}
+
+.flagru-lg.flagru-kam {
+    background-position: -180px -160px;
+}
+
+.flagru-lg.flagru-kb {
+    background-position: -0 -200px;
+}
+
+.flagru-lg.flagru-kc {
+    background-position: -60px -200px;
+}
+
+.flagru-lg.flagru-kda {
+    background-position: -120px -200px;
+}
+
+.flagru-lg.flagru-kem {
+    background-position: -180px -200px;
+}
+
+.flagru-lg.flagru-kgd {
+    background-position: -240px -0;
+}
+
+.flagru-lg.flagru-kgn {
+    background-position: -240px -40px;
+}
+
+.flagru-lg.flagru-kha {
+    background-position: -240px -80px;
+}
+
+.flagru-lg.flagru-khm {
+    background-position: -240px -120px;
+}
+
+.flagru-lg.flagru-kir {
+    background-position: -240px -160px;
+}
+
+.flagru-lg.flagru-kk {
+    background-position: -240px -200px;
+}
+
+.flagru-lg.flagru-kl {
+    background-position: -0 -240px;
+}
+
+.flagru-lg.flagru-klu {
+    background-position: -60px -240px;
+}
+
+.flagru-lg.flagru-ko {
+    background-position: -120px -240px;
+}
+
+.flagru-lg.flagru-kos {
+    background-position: -180px -240px;
+}
+
+.flagru-lg.flagru-kr {
+    background-position: -240px -240px;
+}
+
+.flagru-lg.flagru-krs {
+    background-position: -300px -0;
+}
+
+.flagru-lg.flagru-kya {
+    background-position: -300px -40px;
+}
+
+.flagru-lg.flagru-len {
+    background-position: -300px -80px;
+}
+
+.flagru-lg.flagru-lip {
+    background-position: -300px -120px;
+}
+
+.flagru-lg.flagru-mag {
+    background-position: -300px -160px;
+}
+
+.flagru-lg.flagru-me {
+    background-position: -300px -200px;
+}
+
+.flagru-lg.flagru-mo {
+    background-position: -300px -240px;
+}
+
+.flagru-lg.flagru-mos {
+    background-position: -0 -280px;
+}
+
+.flagru-lg.flagru-mow {
+    background-position: -60px -280px;
+}
+
+.flagru-lg.flagru-mur {
+    background-position: -120px -280px;
+}
+
+.flagru-lg.flagru-nen {
+    background-position: -180px -280px;
+}
+
+.flagru-lg.flagru-ngr {
+    background-position: -240px -280px;
+}
+
+.flagru-lg.flagru-niz {
+    background-position: -300px -280px;
+}
+
+.flagru-lg.flagru-nvs {
+    background-position: -0 -320px;
+}
+
+.flagru-lg.flagru-oms {
+    background-position: -60px -320px;
+}
+
+.flagru-lg.flagru-ore {
+    background-position: -120px -320px;
+}
+
+.flagru-lg.flagru-orl {
+    background-position: -180px -320px;
+}
+
+.flagru-lg.flagru-per {
+    background-position: -240px -320px;
+}
+
+.flagru-lg.flagru-pnz {
+    background-position: -300px -320px;
+}
+
+.flagru-lg.flagru-pri {
+    background-position: -360px -0;
+}
+
+.flagru-lg.flagru-psk {
+    background-position: -360px -40px;
+}
+
+.flagru-lg.flagru-ros {
+    background-position: -360px -80px;
+}
+
+.flagru-lg.flagru-rya {
+    background-position: -360px -120px;
+}
+
+.flagru-lg.flagru-sa {
+    background-position: -360px -160px;
+}
+
+.flagru-lg.flagru-sak {
+    background-position: -360px -200px;
+}
+
+.flagru-lg.flagru-sam {
+    background-position: -360px -240px;
+}
+
+.flagru-lg.flagru-sar {
+    background-position: -360px -280px;
+}
+
+.flagru-lg.flagru-se {
+    background-position: -360px -320px;
+}
+
+.flagru-lg.flagru-sev {
+    background-position: -0 -360px;
+}
+
+.flagru-lg.flagru-smo {
+    background-position: -60px -360px;
+}
+
+.flagru-lg.flagru-spe {
+    background-position: -120px -360px;
+}
+
+.flagru-lg.flagru-sta {
+    background-position: -180px -360px;
+}
+
+.flagru-lg.flagru-sve {
+    background-position: -240px -360px;
+}
+
+.flagru-lg.flagru-ta {
+    background-position: -300px -360px;
+}
+
+.flagru-lg.flagru-tam {
+    background-position: -360px -360px;
+}
+
+.flagru-lg.flagru-tom {
+    background-position: -420px -0;
+}
+
+.flagru-lg.flagru-tul {
+    background-position: -420px -40px;
+}
+
+.flagru-lg.flagru-tve {
+    background-position: -420px -80px;
+}
+
+.flagru-lg.flagru-ty {
+    background-position: -420px -120px;
+}
+
+.flagru-lg.flagru-tyu {
+    background-position: -420px -160px;
+}
+
+.flagru-lg.flagru-ud {
+    background-position: -420px -200px;
+}
+
+.flagru-lg.flagru-uly {
+    background-position: -420px -240px;
+}
+
+.flagru-lg.flagru-vgg {
+    background-position: -420px -280px;
+}
+
+.flagru-lg.flagru-vla {
+    background-position: -420px -320px;
+}
+
+.flagru-lg.flagru-vlg {
+    background-position: -420px -360px;
+}
+
+.flagru-lg.flagru-vor {
+    background-position: -0 -400px;
+}
+
+.flagru-lg.flagru-yan {
+    background-position: -60px -400px;
+}
+
+.flagru-lg.flagru-yar {
+    background-position: -120px -400px;
+}
+
+.flagru-lg.flagru-yev {
+    background-position: -180px -400px;
+}
+
+.flagru-lg.flagru-zab {
+    background-position: -240px -400px;
+}

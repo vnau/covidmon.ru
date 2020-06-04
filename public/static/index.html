@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Covid-19 Pandemic Forecast" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="App.css">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Covid-19 Analytics</title>
+</head>
+
+<body>
+  <div className="App">
+    <div
+      className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 className="my-0 mr-md-auto font-weight-normal text-uppercase">Covid-19 Pandemic Monitoring</h5>
+      <select id="region" className="custom-select w-50" value={this.state.countryId}
+        onChange={this.handleSelectUpdate}>
+        {this.state.regionsOptions}
+      </select>
+      <nav className="my-2 my-md-0 mr-md-3">
+        <a className="p-2 text-dark" href="#">Case Graphs</a>
+        <a className="p-2 text-dark" href="#">Deaths Graphs</a>
+      </nav>
+    </div>
+    <div className="px-3 py-3 pb-md-4 mx-auto text-center">
+      <h1 className="display-4">Covid-19 Analytics <b>{this.state.country}</b></h1>
+      <div className="mb-3">
+      </div>
+      <p className="lead"></p>
+    </div>
+  </div>
+</body>
+
+</html>
