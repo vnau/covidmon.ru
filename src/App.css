@@ -188,3 +188,8 @@ background-color: #e4b119!important;
     .bg-warning-danger{
       background-color: #ed7b26!important;
     }
+
+    .badge-warning-danger {
+      color: #212529;
+      background-color: #ffa705;
+  }

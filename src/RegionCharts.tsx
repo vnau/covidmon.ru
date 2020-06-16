@@ -133,8 +133,8 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
         series: [
           { series: sickCritical, color: colorOrangeRed, title: language === 'ru' ? 'В тяжёлом состоянии' : "Critical" },
           { series: sickHospital, color: colorOrange, title: language === 'ru' ? 'В стационарах' : "Hospital" },
-          { series: sickHome, color: colorLime, title: language === 'ru' ? 'Амбулаторно' : "Confirmed" },
-          { series: sickUnknown, color: colorOrangeTr, title: language === 'ru' ? 'Болеет (не уточнено)' : "Sick (N/A)" }
+          { series: sickUnknown, color: colorOrangeTr, title: language === 'ru' ? 'Болеет (не уточнено)' : "Sick (N/A)" },
+          { series: sickHome, color: colorLime, title: language === 'ru' ? 'Амбулаторно' : "Confirmed" }
         ],
       },
       chart2: {
@@ -142,8 +142,8 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
         series: [
           { series: diffSickCritical, color: colorOrangeRed, title: language === 'ru' ? 'В тяжёлом состоянии' : "Critical" },
           { series: diffSickHospital, color: colorOrange, title: language === 'ru' ? 'В стационарах' : "Hospital" },
-          { series: diffSickHome, color: colorLime, title: language === 'ru' ? 'Амбулаторно' : "Confirmed" },
-          { series: diffSickUnknown, color: colorOrangeTr, title: language === 'ru' ? 'Болеет (не уточнено)' : "Sick (N/A)", hidden: !!(series.hospital) }
+          { series: diffSickUnknown, color: colorOrangeTr, title: language === 'ru' ? 'Болеет (не уточнено)' : "Sick (N/A)", hidden: !!(series.hospital) },
+          { series: diffSickHome, color: colorLime, title: language === 'ru' ? 'Амбулаторно' : "Confirmed" }
         ],
       }
     });

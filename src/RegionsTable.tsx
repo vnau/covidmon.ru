@@ -83,6 +83,16 @@ class RegionsTable extends React.Component<RouteComponentProps<{}> & Props, Stat
         return <div></div>
     }
 
+    function formatWithBadgeCond(cell: any) {
+      if (cell)
+      {
+        var cls = cell>1 ? 'danger' : (cell>0.8? 'warning-danger': cell>0.5?'warning':'success');
+        return (<span className={"badge badge-" + cls}>{numeral(cell).format('0.[00] a')}</span>);
+      }
+      else
+        return <div></div>
+    }
+
     function getFlag(iso12:string, iso3:string): any {
       if (iso12 && iso12==='RU' && iso3)
         return <span className={"flagru flagru-sm flag" + iso3.toLowerCase()} />
@@ -134,6 +144,12 @@ class RegionsTable extends React.Component<RouteComponentProps<{}> & Props, Stat
       // text: 'New Cases',
       text: 'Случаев/\nдень',
       formatter: (cell: any) => formatWithBadge(cell, null, "warning", true),
+      sort: true
+    }, {
+      dataField: 'stat.spread',
+      // text: 'Spread K',
+      text: 'Расп.\nK',
+      formatter: (cell: any) => formatWithBadgeCond(cell),
       sort: true
     }, {
       dataField: 'stat.doubled',
