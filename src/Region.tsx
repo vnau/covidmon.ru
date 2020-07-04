@@ -199,8 +199,8 @@ class Region extends React.Component<RouteComponentProps<Props>, State> {
         </a>
         <a className="card-stat card bg-warning text-white m-2" href="#sick" title={`Смотреть график и прогноз количества больных Covid-19 в ${this.state.regionDat}`}>
           <div className="card-body">
-            <div className="cases-new small text-white text-right">{formatValueDelta(this.state.regionData?.stat?.confirmedDay - this.state.regionData?.stat?.recoveredDay)}</div>
-            <h3 className="mb-0 text-center">{formatValue(this.state.regionData?.stat?.confirmed - this.state.regionData?.stat?.recovered)}</h3>
+            <div className="cases-new small text-white text-right">{formatValueDelta(this.state.regionData?.stat?.confirmedDay - this.state.regionData?.stat?.recoveredDay - this.state.regionData?.stat?.deathsDay)}</div>
+            <h3 className="mb-0 text-center">{formatValue(this.state.regionData?.stat?.confirmed - this.state.regionData?.stat?.recovered - this.state.regionData?.stat?.deaths)}</h3>
           </div>
           <div className="card-footer px-2 py-1 d-flex align-items-center justify-content-between">
             <i className="fa fa-bar-chart"></i>

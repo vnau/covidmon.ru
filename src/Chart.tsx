@@ -25,6 +25,8 @@ export interface Props {
   series: Series[];
   language: string;
   signedValues: boolean;
+  min?: number;
+  max?: number;
 }
 
 export interface State {
@@ -43,17 +45,17 @@ const lineColor2f = '#52af7760';
 class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
   constructor(props: RouteComponentProps<{}> & Props, state: State) {
     super(props);
-    this.state = this.createChartState(props.type, props.title, props.dates, props.series, props.language, props.signedValues);
+    this.state = this.createChartState(props.type, props.title, props.dates, props.series, props.language, props.signedValues, props.min, props.max);
   }
 
   async componentDidMount() {
     if (this.props.series) {
-      this.setState(this.createChartState(this.props.type, this.props.title, this.props.dates, this.props.series, this.props.language, this.props.signedValues));
+      this.setState(this.createChartState(this.props.type, this.props.title, this.props.dates, this.props.series, this.props.language, this.props.signedValues, this.props.min, this.props.max));
     }
   }
 
   async componentWillReceiveProps(nextProps: any) {
-    this.setState(this.createChartState(nextProps.type, nextProps.title, nextProps.dates, nextProps.series, nextProps.language, nextProps.signedValues));
+    this.setState(this.createChartState(nextProps.type, nextProps.title, nextProps.dates, nextProps.series, nextProps.language, nextProps.signedValues, nextProps.min, nextProps.max));
   }
 
   createChart(title: string, values: (number | null)[] | null | undefined, lineColor: string, type: string, id: number, hidden: boolean): any {
@@ -100,7 +102,7 @@ class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
 
   }
 
-  createChartState(type: string, title: string, dates: Date[], series: Series[], language: string, signedValues: boolean): State {
+  createChartState(type: string, title: string, dates: Date[], series: Series[], language: string, signedValues: boolean, min?: number, max?:number): State {
     var isReactSnap = (navigator.userAgent === 'ReactSnap');
     const chartData = this.createChartData(dates,
       series.map((v, id) => this.createChart(v.title, v.series, v.color, type, id, !!v.hidden)).filter(s => s));
@@ -144,6 +146,8 @@ class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
           //type: 'logarithmic',
           display: true,
           ticks: {
+            min: min,
+            max: max,
             suggestedMin: 0,
             suggestedMax: 10,
             callback: function (value: any) {

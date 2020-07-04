@@ -95,7 +95,12 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
     var diffDeaths = this.getDiff(series.deaths).map(v => v ? -v : v);
     var diffTests = series.tests ? this.getDiff(series.tests) : [];
 
-    const sick = confirmed.map((v, i) => v - recovered[i]);
+    var spread = confirmed.map((v, i) => {
+      return i >= 8 ? Math.round(100 * (confirmed[i] - confirmed[i - 4]) /
+        (confirmed[i - 4] - confirmed[i - 8])) / 100 : null;
+    })
+
+    const sick = confirmed.map((v, i) => v - recovered[i] - ((series.deaths && series.deaths[i]) ? series.deaths[i] : 0));
     const sickCritical = series.critical;
     const sickHome = sick.map((v, i) => v && series.hospital && series.hospital[i] && v > series.hospital[i] ? v - series.hospital[i] : null);
     const sickHospital = series.hospital ? series.hospital.map((v, i) => v && series.critical && series.critical[i] ? v - series.critical[i] : null) : [];
@@ -105,6 +110,10 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
     const diffSickHospital = this.getDiff(sickHospital);
     const diffSickUnknown = this.getDiff(sickUnknown);
 
+    var sickRelative = sick.map((v, i) => {
+      return i >= 1 && sick[i] && sick[i - 1] ? (Math.round(1000 * (sick[i]) /
+        (sick[i - 1])) / 10 - 100) / 1 : null;
+    })
 
     chartRows.push({
       anchor: "cases",
@@ -148,6 +157,22 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
       }
     });
 
+    chartRows.push({
+      anchor: "spread",
+      chart1: {
+        type: "bar", dates, language, title: `Коэффициент распространения`, signedValues: false, max: 6,
+        series: [
+          { series: spread, color: colorOrange, title: language === 'ru' ? 'Коэффициент распространения' : "Spread coefficient", }
+        ],
+      },
+      chart2: {
+        type: "bar", dates, language, title: `Относительное изменение количества больных, %`, signedValues: true, min: -20, max: 100,
+        series: [
+          { series: sickRelative, color: colorOrange, title: language === 'ru' ? 'Относительное изменение количества больных, %' : 'Spread coefficient', }
+        ],
+      }
+    });
+
     if (series.tests) {
       chartRows.push({
         anchor: "tests",
@@ -156,7 +181,7 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
           series: [{ series: series.tests, color: colorBlue, title: language === 'ru' ? 'Тестов всего' : 'Tested' }],
         },
         chart2: {
-          type: "bar", dates: dates.slice(1), language, title: `Проведено тестов ежесуточно в ${regionDat}`, signedValues: false,
+          type: "bar", dates: dates.slice(1), language, title: `Проведено тестов посуточно в ${regionDat}`, signedValues: false,
           series: [{ series: diffTests, color: colorBlue, title: language === 'ru' ? 'Тестирований в сутки' : 'Daily tests' }],
         }
       });

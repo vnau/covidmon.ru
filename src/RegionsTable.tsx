@@ -147,7 +147,7 @@ class RegionsTable extends React.Component<RouteComponentProps<{}> & Props, Stat
       sort: true
     }, {
       dataField: 'stat.spread',
-      // text: 'Spread K',
+      // text: 'Doubled in',
       text: 'Расп.\nK',
       formatter: (cell: any) => formatWithBadgeCond(cell),
       sort: true
