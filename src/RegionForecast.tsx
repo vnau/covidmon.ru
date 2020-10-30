@@ -92,6 +92,7 @@ export interface Props {
   language: string;
   region: string;
   regionDat: string;
+  onShowModal: ((title: string, content: JSX.Element) => void);
 }
 
 export interface State {
@@ -371,6 +372,7 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
           { series: estimatedForecast, color: colorRedTr, title: language === 'ru' ? 'Оценка (прогноз)' : 'Estimated (forecast)', },
           { series: confirmed, color: colorOrange, title: language === 'ru' ? 'Зарегистрировано' : "Confirmed", },
           { series: confirmedForecast, color: colorOrangeTr, title: language === 'ru' ? 'Зарегистрировано (прогноз)' : "Confirmed (forecast)", }],
+        onShowModal: this.props.onShowModal,
       },
       chart2: {
         type: "point", dates: dates.slice(1), language, title: `Заражено ежесуточно в ${regionDat}`, signedValues: true,
@@ -380,6 +382,7 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
           { series: diffConfirmed, color: colorOrange, title: language === 'ru' ? 'Зарегистрировано за сутки' : 'Confirmed/day', },
           { series: diffConfirmedForecast, color: colorOrangeTr, title: language === 'ru' ? 'Зарегистрировано за сутки (прогноз)' : 'Confirmed/day (forecast)', },
         ],
+        onShowModal: this.props.onShowModal,
       }
     });
 
@@ -390,6 +393,7 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
         series: [
           { series: series.deaths, color: colorRed, title: language === 'ru' ? 'Летальных случаев всего' : 'Deaths confirmed' },
           { series: deathsForecast, color: colorRedTr, title: language === 'ru' ? 'Летальных случаев (прогноз)' : 'Deaths forecast' }],
+        onShowModal: this.props.onShowModal,
       },
       chart2: {
         type: "bar", dates: dates.slice(1), language, title: `Смертей за день в ${regionDat}`, signedValues: true,
@@ -397,6 +401,7 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
           { series: diffDeaths, color: colorRed, title: language === 'ru' ? 'Летальных случаев за сутки' : 'Daily deaths' },
           { series: diffDeathsForecast, color: colorRedTr, title: language === 'ru' ? 'Летальных случаев за сутки (прогноз)' : 'Daily deaths (forecast)' },
         ],
+        onShowModal: this.props.onShowModal,
       }
     });
 
@@ -408,12 +413,14 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
           { series: series.recovered, color: colorGreen, title: language === 'ru' ? 'Выздоровело всего' : 'Recovered' },
           { series: recoveredForecast, color: colorGreenTr, title: language === 'ru' ? 'Выздоровело (прогноз)' : 'Recovered forecast' },
         ],
+        onShowModal: this.props.onShowModal,
       },
       chart2: {
         type: "bar", dates: dates.slice(1), language, title: `Выздоровело за сутки в ${regionDat}`, signedValues: true,
         series: [{ series: diffRecovered, color: colorGreen, title: language === 'ru' ? 'Выздоровело за сутки' : 'Daily recoveries' },
         { series: diffRecoveredForecast, color: colorGreenTr, title: language === 'ru' ? 'Выздоровело за сутки (прогноз)' : 'Daily recoveries (forecast)' }
         ],
+        onShowModal: this.props.onShowModal,
       }
     });
 

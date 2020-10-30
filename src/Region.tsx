@@ -16,6 +16,7 @@ import './css/flags.css';
 import './css/flagru.css';
 import './css//flag-icon.min.css';
 import LazyLoad from 'react-lazyload';
+import { Modal, Container } from "react-bootstrap";
 
 const apiHost = 'https://api.covidmon.ru'
 //const apiHost = 'http://localhost:3000'
@@ -38,6 +39,8 @@ export interface State {
   iso3: string;
   regionData: any;
   language: string;
+  modalContent: JSX.Element | null;
+  modalTitle: string;
 }
 
 class Region extends React.Component<RouteComponentProps<Props>, State> {
@@ -55,12 +58,14 @@ class Region extends React.Component<RouteComponentProps<Props>, State> {
       countrySlug: '',
       regionSlug: '',
       language: props.match.params.language,
+      modalContent: null,
+      modalTitle: '',
     }
   }
 
   redirectToTarget = (e: any, row: any, rowIndex: any) => {
   }
-  
+
   async componentDidMount() {
     await this.updateData(this.props);
   }
@@ -78,6 +83,20 @@ class Region extends React.Component<RouteComponentProps<Props>, State> {
       const opt: any = { top: 0, behavior: "instant" };
       window.scrollTo(opt);
     }
+  }
+
+  showModal = (title: string, content: JSX.Element) => {
+    this.setState({
+      modalTitle: title,
+      modalContent: content,
+    });
+  }
+
+  hideModal = () => {
+    this.setState({
+      modalTitle: '',
+      modalContent: null,
+    });
   }
 
   public render() {
@@ -115,6 +134,7 @@ class Region extends React.Component<RouteComponentProps<Props>, State> {
       region: this.state.region,
       regionDat: this.state.regionDat,
       language: language,
+      onShowModal: this.showModal,
     }
 
     var chartsDiv = <div></div>
@@ -323,30 +343,40 @@ class Region extends React.Component<RouteComponentProps<Props>, State> {
       flag = <span className={"flagru flagru-lg rounded flag" + this.state.iso3.toLowerCase()}></span>
 
     return <main>
-      <Helmet htmlAttributes={{ "lang": language }}>
-        <title>{`COVID-19 ${(this.state.regionDat ? "в " + this.state.regionDat : "по странам мира")}`}</title>
-        <meta name="description" content={`Статистика, график и прогноз распространения коронавируса COVID-19 ${(this.state.regionDat ? "в " + this.state.regionDat : "в странах мира")}`} />
-      </Helmet>
+      <Container>
+        <Helmet htmlAttributes={{ "lang": language }}>
+          <title>{`COVID-19 ${(this.state.regionDat ? "в " + this.state.regionDat : "по странам мира")}`}</title>
+          <meta name="description" content={`Статистика, график и прогноз распространения коронавируса COVID-19 ${(this.state.regionDat ? "в " + this.state.regionDat : "в странах мира")}`} />
+        </Helmet>
 
-      <div className="px-3 pb-3 pb-md-4 mx-auto text-center">
-        {/* <h1 className="display-4">Covid-19 Analytics in <b>{this.state.regionDat} </b>{this.state.iso12 ? <span className={"flag-icon small rounded flag-icon-" + this.state.iso12.toLowerCase()} /> : ''}</h1> */}
-        <h1 className="display-4">Ситуация с COVID-19 в <b>{this.state.regionDat ? this.state.regionDat : "мире"} </b>{flag}</h1>
-        {updated && <small>данные обновлены {updated}</small>}
-      </div>
-
-      {statDiv}
-      {chartsDiv}
-
-      {tableDiv}
-      {forecastDiv}
-      {summaryDiv}
-
-      <footer className="page-footer font-small p-4" >
-        <div className="container-fluid text-center text-md-center">
-          {/* <small>Data sources: CSSE at Johns Hopkins University, Rospotrebnadzor</small> */}
-          <small>Источники данных: CSSE at Johns Hopkins University, Роспотребнадзор</small>
+        <div className="px-3 pb-3 pb-md-4 mx-auto text-center">
+          {/* <h1 className="display-4">Covid-19 Analytics in <b>{this.state.regionDat} </b>{this.state.iso12 ? <span className={"flag-icon small rounded flag-icon-" + this.state.iso12.toLowerCase()} /> : ''}</h1> */}
+          <h1 className="display-4">Ситуация с COVID-19 в <b>{this.state.regionDat ? this.state.regionDat : "мире"} </b>{flag}</h1>
+          {updated && <small>данные обновлены {updated}</small>}
         </div>
-      </footer>
+
+        {statDiv}
+        {chartsDiv}
+
+        {tableDiv}
+        {forecastDiv}
+        {summaryDiv}
+
+        <footer className="page-footer font-small p-4" >
+          <div className="container-fluid text-center text-md-center">
+            {/* <small>Data sources: CSSE at Johns Hopkins University, Rospotrebnadzor</small> */}
+            <small>Источники данных: CSSE at Johns Hopkins University, Роспотребнадзор</small>
+          </div>
+        </footer>
+
+        {/* Popup modal */}
+        <Modal size="lg" show={this.state.modalContent != null} onHide={() => this.hideModal()}>
+          <Modal.Header className='bg-light pb-2 text-secondary' closeButton>
+            <p className='text-center w-100' style={{ fontSize: '0.8em' }}>{this.state.modalTitle}</p>
+          </Modal.Header>
+          {this.state.modalContent}
+        </Modal>
+      </Container>
     </main>
   }
 

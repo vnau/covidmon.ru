@@ -10,6 +10,7 @@ import { Line, Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-annotation';
 import moment from 'moment';
 import LazyLoad from 'react-lazyload';
+import { Button } from "react-bootstrap";
 
 export interface Series {
   title: string;
@@ -27,6 +28,7 @@ export interface Props {
   signedValues: boolean;
   min?: number;
   max?: number;
+  onShowModal: ((title: string, content: JSX.Element) => void)
 }
 
 export interface State {
@@ -102,7 +104,7 @@ class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
 
   }
 
-  createChartState(type: string, title: string, dates: Date[], series: Series[], language: string, signedValues: boolean, min?: number, max?:number): State {
+  createChartState(type: string, title: string, dates: Date[], series: Series[], language: string, signedValues: boolean, min?: number, max?: number): State {
     var isReactSnap = (navigator.userAgent === 'ReactSnap');
     const chartData = this.createChartData(dates,
       series.map((v, id) => this.createChart(v.title, v.series, v.color, type, id, !!v.hidden)).filter(s => s));
@@ -126,7 +128,9 @@ class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
         stacked: type === "stack",
         type: 'time',
         offset: true,
-        ticks: { major: { enabled: true, fontStyle: 'bold' }, },
+        ticks: {
+          major: { enabled: true, fontStyle: 'bold' },
+        },
         time: {
           displayFormats: {
             'day': 'DD',
@@ -203,14 +207,18 @@ class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
     };
   }
 
-  render() {
-    var isReactSnap = (navigator.userAgent === 'ReactSnap');
+  renderChart() {
     var chart = <div></div>
     if (this.state.type === 'line' || this.state.type === 'point' || this.state.type === 'stackline') {
       chart = <Line data={this.state.chartData} height={170} options={this.state.chartOptions} />
     } else if (this.state.type === 'bar' || this.state.type === 'stack') {
       chart = <Bar data={this.state.chartData} height={170} options={this.state.chartOptions} />
     }
+    return <main>{chart}</main>
+  }
+
+  render() {
+    var isReactSnap = (navigator.userAgent === 'ReactSnap');
 
     if (isReactSnap)
       return (
@@ -218,17 +226,23 @@ class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
           <h5>{this.state.title}</h5>
           <div>
             <ul className='list-group'>
-              {this.state.chartData.datasets.map((d: any) => <li className='list-group-item'>График: {d.label}</li>)}
+              {this.state.chartData.datasets.map((d: any) => <li className='list-group-item'></li>)}
             </ul>
           </div>
         </main>
       )
+    else if (this.props.onShowModal === undefined) {
+      return <main>{this.renderChart()}</main>
+    }
     else return (
       <main>
+        <Button className="float-right" variant="light" onClick={() => this.props.onShowModal(this.state.title, this.renderChart())}>
+          <i className="fa fa-arrows-alt text-secondary"></i>
+        </Button>
         <h5>{this.state.title}</h5>
         <div>
           <LazyLoad height={311} offset={100}>
-            {chart}
+            {this.renderChart()}
           </LazyLoad>
         </div>
       </main>

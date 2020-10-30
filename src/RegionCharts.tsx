@@ -35,6 +35,7 @@ export interface Props {
   language: string;
   region: string;
   regionDat: string;
+  onShowModal: ((title: string, content:JSX.Element)=> void);
 }
 
 export interface State {
@@ -124,6 +125,7 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
           { series: sick, color: colorOrange, title: language === 'ru' ? 'Болеет' : 'Sick' },
           { series: series.recovered, color: colorGreen, title: language === 'ru' ? 'Выздоровело' : 'Recovered' }
         ],
+        onShowModal: this.props.onShowModal,
       },
       chart2: {
         type: "stack", dates: dates.slice(1), language, title: `События по дням в ${regionDat}`, signedValues: false,
@@ -132,6 +134,7 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
           { series: diffConfirmed, color: colorOrange, title: language === 'ru' ? 'Выявлено' : 'Confirmed' },
           { series: diffRecovered, color: colorGreen, title: language === 'ru' ? 'Выздоровело' : 'Recovered' }
         ],
+        onShowModal: this.props.onShowModal,
       }
     });
 
@@ -145,6 +148,7 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
           { series: sickUnknown, color: colorOrangeTr, title: language === 'ru' ? 'Болеет (не уточнено)' : "Sick (N/A)" },
           { series: sickHome, color: colorLime, title: language === 'ru' ? 'Амбулаторно' : "Confirmed" }
         ],
+        onShowModal: this.props.onShowModal,
       },
       chart2: {
         type: "stack", dates: dates.slice(1), language, title: `Изменение количества больных в ${regionDat}`, signedValues: true,
@@ -154,6 +158,7 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
           { series: diffSickUnknown, color: colorOrangeTr, title: language === 'ru' ? 'Болеет (не уточнено)' : "Sick (N/A)", hidden: !!(series.hospital) },
           { series: diffSickHome, color: colorLime, title: language === 'ru' ? 'Амбулаторно' : "Confirmed" }
         ],
+        onShowModal: this.props.onShowModal,
       }
     });
 
@@ -164,12 +169,14 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
         series: [
           { series: spread, color: colorOrange, title: language === 'ru' ? 'Коэффициент распространения' : "Spread coefficient", }
         ],
+        onShowModal: this.props.onShowModal,
       },
       chart2: {
         type: "bar", dates, language, title: `Относительное изменение количества больных, %`, signedValues: true, min: -20, max: 100,
         series: [
           { series: sickRelative, color: colorOrange, title: language === 'ru' ? 'Относительное изменение количества больных, %' : 'Spread coefficient', }
         ],
+        onShowModal: this.props.onShowModal,
       }
     });
 
@@ -179,10 +186,12 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
         chart1: {
           type: "bar", dates, language, title: `График тестирования в ${regionDat}`, signedValues: false,
           series: [{ series: series.tests, color: colorBlue, title: language === 'ru' ? 'Тестов всего' : 'Tested' }],
+          onShowModal: this.props.onShowModal,
         },
         chart2: {
           type: "bar", dates: dates.slice(1), language, title: `Проведено тестов посуточно в ${regionDat}`, signedValues: false,
           series: [{ series: diffTests, color: colorBlue, title: language === 'ru' ? 'Тестирований в сутки' : 'Daily tests' }],
+          onShowModal: this.props.onShowModal,
         }
       });
     }
