@@ -146,6 +146,12 @@ class RegionsTable extends React.Component<RouteComponentProps<{}> & Props, Stat
       formatter: (cell: any) => formatWithBadge(cell, null, "warning", true),
       sort: true
     }, {
+      dataField: 'confirmedDayPop',
+      // text: 'New Cases',
+      text: 'Случаев/\n100т',
+      formatter: (cell: any) => formatWithBadge(Math.round(cell), null, "warning", true),
+      sort: true
+    }, {
       dataField: 'stat.spread',
       // text: 'Doubled in',
       text: 'Расп.\nK',
@@ -223,6 +229,7 @@ class RegionsTable extends React.Component<RouteComponentProps<{}> & Props, Stat
       countries[i].deathsPop = (countries[i].population && countries[i]?.stat?.deaths) ? 1000000 * countries[i].stat.deaths / countries[i].population : undefined;
       countries[i].testsPerCase = (countries[i]?.stat?.confirmed && countries[i]?.stat?.tests) ? countries[i].stat.tests / countries[i].stat.confirmed : undefined;
       countries[i].cfr = (countries[i]?.stat?.deaths && countries[i]?.stat?.recovered) ? countries[i].stat.deaths / (countries[i].stat.deaths + countries[i].stat.recovered) : undefined;
+      countries[i].confirmedDayPop = countries[i]?.stat?.confirmedDay * 100000 / countries[i].population;
     }
 
     return <main>
