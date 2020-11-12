@@ -1,18 +1,17 @@
 import React, { ChangeEvent } from 'react';
 import { RouteComponentProps } from 'react-router';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './App.css';
 import '../node_modules/react-vis/dist/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import { Line, Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-annotation';
 import moment from 'moment';
 import { Extrapolate } from './Extrapolate'
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { Slider } from '@material-ui/core';
-import Chart, { Props as ChartProps, Series } from './Chart';
+import Chart, { Props as ChartProps } from './Chart';
 
 interface ChartRow {
   anchor: string,
@@ -36,16 +35,6 @@ export function findLastIndex<T>(array: Array<T>, predicate: (value: T, index: n
   }
   return -1;
 }
-
-const useStyles = makeStyles({
-  option: {
-    fontSize: 15,
-    '& > span': {
-      marginRight: 10,
-      fontSize: 18,
-    },
-  },
-});
 
 const PrettoSlider = withStyles({
   root: {
@@ -111,20 +100,12 @@ export interface State {
   chartRows: ChartRow[];
 }
 
-const sinceDate = "3/4/20";
-const lineColor1 = '#0076be';
-const lineColor2 = '#52af77';
-const lineColor1f = '#0076be60';
-const lineColor2f = '#52af7760';
-const colorBlue = '#007bff'
 const colorRed = '#dc3545';
 const colorRedTr = '#dc354560';
 const colorOrange = '#ffc107';
 const colorOrangeTr = '#ffc10760';
-const colorOrangeRed = '#ed7b26';
 const colorGreen = '#28a745';
 const colorGreenTr = '#28a74560';
-const colorLime = '#93b426';
 
 class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, State> {
   constructor(props: RouteComponentProps<{}> & Props, state: State) {
@@ -173,12 +154,9 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
   }
 
   getForecastData(time: Date[], values: (number | null)[], forecastDays: number): (number | null)[] {
-    //const sourceDays = time.length
     var backDays = 35;
-    const sourceDaysFull = time.length;// findLastIndex(values, (v) => v !== null) + 1;//time.length;
     const sourceDays = findLastIndex(values, (v) => v !== null) + 1;
 
-    const lastDate = time[sourceDays - 1];
     backDays = Math.min(backDays, sourceDays);
     const skipDays = Math.max(sourceDays - backDays, 0);
     const x = Array.from(Array(backDays).keys()).map(v => v + skipDays);
@@ -274,34 +252,6 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
     const stateDiffEstimatedForecast = recalc && !isReactSnap
       ? this.gaussianBlur(stateDiffDeathsForecast ? stateDiffDeathsForecast : [], 6)
       : this.state.diffEstimatedForecast;
-
-
-    //var curDiffDeathsForecast = diffDeathsForecast?.slice(0,sourceDays + forecastDays );
-    //var curDiffConfirmedForecast = diffConfirmedForecast?.slice(0,sourceDays + forecastDays );
-    /*
-  await new Promise(v => {
-    // find optimal distance
-    var optDist = Number.MAX_VALUE;
-    var optOffset = 0;
-    var optDeathPercent = 0;
-    for (var offset = 0; offset < 25; offset += 1) {
-      for (var caseFatalityRate = 1; caseFatalityRate < 6; caseFatalityRate += 0.1) {
-        const dist = this.getDistance(series.confirmed, series.deaths, caseFatalityRate, offset);
-        if (dist < optDist) {
-          optOffset = offset;
-          optDeathPercent = Math.round(caseFatalityRate * 10) / 10;
-          optDist = dist
-        }
-      }
-    }
-
-    this.setState({
-      optOffset: optOffset,
-      optDeathPercent: optDeathPercent,
-    });
-
-  });
-  */
 
     const diffConfirmedForecast = (forecastDays > 0 && stateDiffConfirmedForecast)
       ? stateDiffConfirmedForecast
@@ -424,46 +374,6 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
       }
     });
 
-    /*
-        const missed = confirmed.map((item, index) =>
-          (item == null || estimated[index] === null || item === estimated[index])
-            ? null : (Math.round(estimated[index] ?? 0 - item)));
-    
-        var missedForecast = null;
-        if (forecastDays > 0) {
-          missedForecast = this.getForecastData(time, missed.filter(x => x !== null).map(x => x ?? 0), forecastDays);
-        }
-    
-        const notConfirmedChart = this.createChartData(time, [
-          this.createChart("Missed cases", missed, lineColor1, true),
-          this.createChart("Missed forecast", missedForecast, lineColor1f, true)
-        ]);
-    */
-
-    // const annotations = result[2].map((item) => {
-    //   return {
-    //     drawTime: "afterDatasetsDraw",
-    //     type: "line",
-    //     mode: "vertical",
-    //     scaleID: "x-axis-0",
-    //     value: moment(item.date, 'DD.MM.YYYY').toDate(),
-    //     borderColor: "#00000050",
-    //     borderWidth: 1,
-    //     label: {
-    //       backgroundColor: "rgba(175,175,175,1)",
-    //       fontStyle: "normal",
-    //       cornerRadius: 3,
-    //       position: "top",
-    //       content: item.text,
-    //       enabled: true,
-    //       yAdjust: 2
-    //     },
-    //     // onClick: function (e: any) {
-    //     //   console.log("Annotation", e.type, this);
-    //     // }
-    //   }
-    // });
-
     return {
       region,
       regionDat,
@@ -554,8 +464,6 @@ class RegionForecast extends React.Component<RouteComponentProps<{}> & Props, St
   }
 
   render() {
-    var isReactSnap = (navigator.userAgent === 'ReactSnap');
-
     var rows = this.state.chartRows.map(row =>
       <a id={row.anchor} key={row.anchor}>
         <div className="row">

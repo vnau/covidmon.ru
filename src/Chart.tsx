@@ -1,6 +1,6 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './App.css';
 import '../node_modules/react-vis/dist/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -38,11 +38,6 @@ export interface State {
   chartOptions: {};
   language: string;
 }
-
-const lineColor1 = '#0076be';
-const lineColor2 = '#52af77';
-const lineColor1f = '#0076be60';
-const lineColor2f = '#52af7760';
 
 class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
   constructor(props: RouteComponentProps<{}> & Props, state: State) {
@@ -105,7 +100,6 @@ class Chart extends React.Component<RouteComponentProps<{}> & Props, State> {
   }
 
   createChartState(type: string, title: string, dates: Date[], series: Series[], language: string, signedValues: boolean, min?: number, max?: number): State {
-    var isReactSnap = (navigator.userAgent === 'ReactSnap');
     const chartData = this.createChartData(dates,
       series.map((v, id) => this.createChart(v.title, v.series, v.color, type, id, !!v.hidden)).filter(s => s));
 

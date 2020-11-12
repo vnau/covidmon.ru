@@ -77,7 +77,6 @@ class RegionSummary extends React.Component<RouteComponentProps<{}> & Props, Sta
                 recovered = `Из ${stat.confirmed} заболевших человек пока никто не выздоровел.`;
             }
 
-
             if (stat.recovered && stat.confirmed && stat.recovered < stat.confirmed)
                 recovered += ` ${numeral(stat.confirmed - stat.recovered).format()} человек находятся на лечении.`;
 
@@ -95,6 +94,7 @@ class RegionSummary extends React.Component<RouteComponentProps<{}> & Props, Sta
                 firstCase = `Первый случай заражения коронавирусом в ${this.props.regionDat} был зарегистрирован ${startDate.fromNow()}, ${startDate.format('LL')}`;
             }
         }
+
         return <main>
             <p>{cases}</p>
             <p>{recovered}</p>

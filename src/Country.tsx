@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 
 interface RouteParams {
   countrySlug: string,
@@ -9,8 +8,8 @@ interface RouteParams {
 
 export default () => {
   return (
-      <div>
-      </div>
+    <div>
+    </div>
   )
 }
 

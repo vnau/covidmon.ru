@@ -1,16 +1,14 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './App.css';
 import '../node_modules/react-vis/dist/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import Chart from './Chart';
-import { Props as ChartProps, Series } from './Chart';
+import { Props as ChartProps } from './Chart';
 import 'chartjs-plugin-annotation';
-import moment from 'moment';
-import LazyLoad from 'react-lazyload';
 
 interface ChartRow {
   anchor: string,
@@ -35,7 +33,7 @@ export interface Props {
   language: string;
   region: string;
   regionDat: string;
-  onShowModal: ((title: string, content:JSX.Element)=> void);
+  onShowModal: ((title: string, content: JSX.Element) => void);
 }
 
 export interface State {
@@ -84,8 +82,6 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
   }
 
   getChartsState(series: IRegionSeries, region: string, regionDat: string, language: string): State {
-    var isReactSnap = (navigator.userAgent === 'ReactSnap');
-
     var chartRows: ChartRow[] = [];
     var dates: Date[] = series.dates.map(v => v);
     const confirmed = series.confirmed;

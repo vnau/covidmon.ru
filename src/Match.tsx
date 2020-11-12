@@ -10,9 +10,8 @@ import { Helmet } from "react-helmet";
 import './css/flags.css';
 import './css/flagru.css';
 import './css//flag-icon.min.css';
-import LazyLoad from 'react-lazyload';
 import Chart from './Chart';
-import { Props as ChartProps, Series } from './Chart';
+import { Props as ChartProps } from './Chart';
 
 const apiHost = 'https://api.covidmon.ru'
 //const apiHost = 'http://localhost:3000'
@@ -48,16 +47,6 @@ export interface State {
   update: Date;
   chart: ChartProps | null;
 }
-
-function getRandomColor(): string {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 
 class Match extends React.Component<RouteComponentProps<Props>, State> {
   constructor(props: RouteComponentProps<Props>, state: State) {

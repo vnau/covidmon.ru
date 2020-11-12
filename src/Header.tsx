@@ -5,10 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
-import { AsyncTypeahead, Token, TypeaheadLabelKey } from 'react-bootstrap-typeahead'
+import { AsyncTypeahead } from 'react-bootstrap-typeahead'
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import "react-bootstrap-typeahead/css/Typeahead-bs4.css";
-import { useHistory } from "react-router-dom";
 import './css/flagru.css';
 import $ from 'jquery';
 
@@ -45,7 +44,7 @@ class Header extends React.Component<RouteComponentProps<{}> & propTypes, defaul
     };
 
     render() {
-        var language = this.state.language ? this.state.language : 'ru';
+        // var language = this.state.language ? this.state.language : 'ru';
         const ref = React.createRef<AsyncTypeahead<State>>();
 
         return <main>

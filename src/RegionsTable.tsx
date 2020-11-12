@@ -9,7 +9,6 @@ import 'numeral/locales/ru';
 import 'moment/locale/ru'
 import './css/flagru.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import { TableContainer } from '@material-ui/core';
 
 export interface Props {
   countrySlug: string,
@@ -84,17 +83,16 @@ class RegionsTable extends React.Component<RouteComponentProps<{}> & Props, Stat
     }
 
     function formatWithBadgeCond(cell: any) {
-      if (cell)
-      {
-        var cls = cell>1 ? 'danger' : (cell>0.8? 'warning-danger': cell>0.5?'warning':'success');
+      if (cell) {
+        var cls = cell > 1 ? 'danger' : (cell > 0.8 ? 'warning-danger' : cell > 0.5 ? 'warning' : 'success');
         return (<span className={"badge badge-" + cls}>{numeral(cell).format('0.[00] a')}</span>);
       }
       else
         return <div></div>
     }
 
-    function getFlag(iso12:string, iso3:string): any {
-      if (iso12 && iso12==='RU' && iso3)
+    function getFlag(iso12: string, iso3: string): any {
+      if (iso12 && iso12 === 'RU' && iso3)
         return <span className={"flagru flagru-sm flag" + iso3.toLowerCase()} />
       else if (iso12)
         return <span className={"flag flag-" + iso12.toLowerCase()} />
@@ -117,7 +115,7 @@ class RegionsTable extends React.Component<RouteComponentProps<{}> & Props, Stat
     }, {
       dataField: 'iso12',
       text: '',
-      formatter: (cell:string ,row:any)=>getFlag(cell, row.iso3),
+      formatter: (cell: string, row: any) => getFlag(cell, row.iso3),
       sort: false,
 
     }, {
@@ -217,10 +215,6 @@ class RegionsTable extends React.Component<RouteComponentProps<{}> & Props, Stat
       dataField: 'stat.confirmed',
       order: "desc" as SortOrder
     }];
-
-    const rowEvents = {
-      onClick: this.redirectToTarget
-    };
 
     const countries = this.state.regions;
     for (var i = 0; i < countries.length; i++) {
