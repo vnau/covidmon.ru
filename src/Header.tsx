@@ -52,9 +52,7 @@ class Header extends React.Component<RouteComponentProps<{}> & propTypes, defaul
                 <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 box-shadow">
                     <h5 className="my-0 mr-md-auto font-weight-normal text-uppercase">Covid-19 Pandemic Monitoring</h5>
                     <nav className="my-2 my-md-0 mr-md-3">
-                        {/* <Link className='p-2 text-dark' to={{ pathname: `/countries/` }}>World</Link>
-                        <Link className='p-2 text-dark' to={{ pathname: `/countries/russia/`, state: { countrySlug: 'russia', region: '', country: 'Russia' } }}>Russia</Link> */}
-                        <div className="d-inline-block" style={{ minWidth: 250 }} >
+                        <div className="d-inline-block pl-2" style={{ minWidth: 250 }} >
                             <AsyncTypeahead
                                 {...this.state}
                                 id="typeahead"

@@ -25,6 +25,8 @@ interface IRegionSeries {
   critical: number[];
   hospital: number[];
   observator: number[];
+  deaths_ick: number[];
+  hospital_ick: number[];
 }
 
 export interface Props {
@@ -90,6 +92,8 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
     var diffConfirmed = this.getDiff(confirmed).map(x => x ? x : null);
     var diffRecovered = this.getDiff(series.recovered).map(x => x ? -x : null);
     var diffDeaths = this.getDiff(series.deaths).map(v => v ? -v : v);
+    var diffDeathsIck = this.getDiff(series.deaths_ick).map(v => v ? -v : v);
+    var diffHospitalIck = this.getDiff(series.hospital_ick).map(v => v ? v : null);
     var diffTests = series.tests ? this.getDiff(series.tests) : [];
 
     var spread = confirmed.map((v, i) => {
@@ -100,7 +104,12 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
     const sick = confirmed.map((v, i) => v - recovered[i] - ((series.deaths && series.deaths[i]) ? series.deaths[i] : 0));
     const sickCritical = series.critical;
     const sickHome = sick.map((v, i) => v && series.hospital && series.hospital[i] && v > series.hospital[i] ? v - series.hospital[i] : null);
-    const sickHospital = series.hospital ? series.hospital.map((v, i) => v && series.critical && series.critical[i] ? v - series.critical[i] : null) : [];
+    const sickHospital = series.hospital
+      ? series.hospital.map((v, i) =>
+        v && series.critical && series.critical[i]
+          ? v - series.critical[i]
+          : v)
+      : [];
     const sickUnknown = sick.map((v, i) => Math.max(0, v - this.getVal(series.critical, i) - this.getVal(sickHome, i) - this.getVal(sickHospital, i)));
     const diffSickCritical = this.getDiff(sickCritical);
     const diffSickHome = this.getDiff(sickHome);
@@ -133,6 +142,28 @@ class RegionCharts extends React.Component<RouteComponentProps<{}> & Props, Stat
         onShowModal: this.props.onShowModal,
       }
     });
+
+    if (series.hospital_ick || series.deaths_ick) {
+      chartRows.push({
+        anchor: "sick",
+        chart1: {
+          type: "stack", dates, language, title: `Данные ИЦК, ${region}`, signedValues: false,
+          series: [
+            { series: series.deaths_ick, color: colorRed, title: language === 'ru' ? 'Умерло в Covid стационарах' : "Deaths" },
+            { series: series.hospital_ick, color: colorOrange, title: language === 'ru' ? 'Занято коек' : "Hospital" },
+          ],
+          onShowModal: this.props.onShowModal,
+        },
+        chart2: {
+          type: "stack", dates: dates.slice(1), language, title: `Данные ИЦК, ${region} (изменение)`, signedValues: false,
+          series: [
+            { series: diffDeathsIck, color: colorRed, title: language === 'ru' ? 'Умерло в Covid стационарах' : "Deaths" },
+            { series: diffHospitalIck, color: colorOrange, title: language === 'ru' ? 'Занято коек' : "Hospital" },
+          ],
+          onShowModal: this.props.onShowModal,
+        }
+      });
+    }
 
     chartRows.push({
       anchor: "sick",
